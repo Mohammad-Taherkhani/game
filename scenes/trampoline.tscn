@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://cv525hw62qacb"]
+
+[ext_resource type="Script" path="res://scripts/trampoline.gd" id="1_e5hll"]
+[ext_resource type="Texture2D" uid="uid://cepa3hnd74is5" path="res://assets/Traps/Trampoline/Idle.png" id="1_w3pya"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ugiu"]
+atlas = ExtResource("1_w3pya")
+region = Rect2(0, 0, 28, 28)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b7en3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ugiu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_10j01"]
+size = Vector2(25, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_reb4c"]
+size = Vector2(25, 18)
+
+[node name="trampoline" type="Area2D" groups=["trampoline"]]
+collision_mask = 2
+script = ExtResource("1_e5hll")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_b7en3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 2
+position = Vector2(-0.5, 11)
+shape = SubResource("RectangleShape2D_10j01")
+
+[node name="CharacterBody2d" type="CharacterBody2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2d"]
+position = Vector2(-0.5, 12)
+shape = SubResource("RectangleShape2D_reb4c")
+debug_color = Color(0.889277, 0.249172, 0.540243, 0.42)

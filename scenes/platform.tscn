@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dv2psssdhs0sr"]
+
+[ext_resource type="Texture2D" uid="uid://dk5kstyb3s2h7" path="res://assets/Items/Boxes/Box3/Idle.png" id="1_wniqu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_52m6v"]
+size = Vector2(40, 12)
+
+[node name="platform" type="AnimatableBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(20, -6)
+scale = Vector2(2, 0.541667)
+texture = ExtResource("1_wniqu")
+region_enabled = true
+region_rect = Rect2(4.1105, 2.44459, 19.9823, 19.7845)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(20, -6)
+shape = SubResource("RectangleShape2D_52m6v")
+one_way_collision = true

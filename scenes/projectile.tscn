@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://2e54e0onoot2"]
+
+[ext_resource type="Script" path="res://scripts/projectile.gd" id="2_62gdw"]
+[ext_resource type="Texture2D" uid="uid://dkd3oqoqn17av" path="res://assets/Other/Dust Particle.png" id="2_u4l61"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nucg6"]
+radius = 3.0
+
+[node name="projectile" type="RigidBody2D"]
+script = ExtResource("2_62gdw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -0.335367
+
+[node name="DustParticle" type="Sprite2D" parent="."]
+position = Vector2(-2.98023e-08, -1)
+scale = Vector2(0.685547, 0.675781)
+texture = ExtResource("2_u4l61")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_nucg6")

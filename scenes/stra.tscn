@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://bqsrarjfi7spe"]
+
+[ext_resource type="Texture2D" uid="uid://8ervkqygx6vp" path="res://assets/Items/Fruits/Strawberry.png" id="1_h7ywn"]
+[ext_resource type="Script" path="res://scripts/stra.gd" id="1_i28eu"]
+[ext_resource type="AudioStream" uid="uid://c6os4211gbd83" path="res://assets/coin.wav" id="2_4i2i1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtvhr"]
+atlas = ExtResource("1_h7ywn")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4gv2t"]
+atlas = ExtResource("1_h7ywn")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_de4ep"]
+atlas = ExtResource("1_h7ywn")
+region = Rect2(384, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5byd8"]
+atlas = ExtResource("1_h7ywn")
+region = Rect2(512, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_30obq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gtvhr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4gv2t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_de4ep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5byd8")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0wnxy"]
+radius = 6.32456
+
+[node name="stra" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_i28eu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_30obq")
+autoplay = "default"
+frame = 3
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0wnxy")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_4i2i1")
+pitch_scale = 1.79
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
